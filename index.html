@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title data-key="siteTitle">Sannica</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Style Kustom -->
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+        .browser-shadow { box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.05), 0px 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0,0,0,.05); }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        
+        /* Style untuk tombol bahasa yang aktif */
+        .lang-switcher a.active {
+            font-weight: 800;
+            color: #2563eb; 
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- ===== Navigasi ===== -->
+    <nav class="bg-white/80 backdrop-blur-sm border-b border-gray-100 fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-gray-900" data-key="navBrand">BrandKita</a>
+                </div>
+                
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex items-center justify-center space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 font-medium" data-key="navAbout">Tentang</a>
+                    <a href="#video" class="text-gray-600 hover:text-blue-600 font-medium" data-key="navVideo">Video</a>
+                    <a href="#produk" class="text-gray-600 hover:text-blue-600 font-medium" data-key="navProduk">Produk</a>
+                    <a href="#testimoni" class="text-gray-600 hover:text-blue-600 font-medium" data-key="navTestimoni">Testimoni</a>
+                    <a href="#lokasi" class="text-gray-600 hover:text-blue-600 font-medium" data-key="navLokasi">Lokasi</a>
+                </div>
+                
+                <!-- Tombol CTA & Bahasa (Desktop) -->
+                <div class="hidden md:flex items-center gap-4">
+                    <!-- Tombol Bahasa -->
+                    <div class="lang-switcher text-sm font-medium text-gray-500 space-x-2">
+                        <a href="#order" class="hover:text-blue-600" id="lang-id">ID</a>
+                        <span>|</span>
+                        <a href="#order" class="hover:text-blue-600" id="lang-en">EN</a>
+                    </div>
+                    <a href="#order" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-lg shadow-sm transition-all" data-key="navPesan">
+                        Pesan Sekarang
+                    </a>
+                </div>
+                <!-- Sosmed (IG & TikTok) -->
+                    <div class="flex items-center gap-3 mr-2">
+                        <!-- Instagram (Pake Feather) -->
+                        <a href="https://www.instagram.com/sannica_kramat/" target="_blank" class="text-gray-500 hover:text-pink-600 transition-colors">
+                            <i data-feather="instagram" class="w-5 h-5"></i>
+                        </a>
+                        
+                        <!-- TikTok (Pake SVG Custom karena Feather gak punya) -->
+                        <a href="https://www.tiktok.com/@sannica_kramat?_r=1&_t=ZS-91VPuOxAahw" target="_blank" class="text-gray-500 hover:text-black transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                <!-- Tombol Menu Mobile -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 p-2 rounded-md">
+                        <i data-feather="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Mobile  -->
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#about" class="block text-gray-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md" data-key="navAboutMobile">Tentang</a>
+                    <a href="#video" class="block text-gray-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md" data-key="navVideoMobile">Video</a>
+                    <a href="#produk" class="block text-gray-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md" data-key="navProdukMobile">Produk</a>
+                    <a href="#testimoni" class="block text-gray-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md" data-key="navTestimoniMobile">Testimoni</a>
+                    <a href="#lokasi" class="block text-gray-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md" data-key="navLokasiMobile">Lokasi</a>
+                </div>
+                <div class="px-5 pb-4 border-t border-gray-100 pt-4">
+                    <!-- Sosmed Mobile -->
+                    <div class="flex justify-center gap-6 mb-4">
+                        <a href="https://www.instagram.com/sannica_kramat/" target="_blank" class="text-gray-500 hover:text-pink-600">
+                            <i data-feather="instagram" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@sannica_kramat?_r=1&_t=ZS-91VPuOxAahw" target="_blank" class="text-gray-500 hover:text-black">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Tombol Bahasa Mobile -->
+                    <div class="lang-switcher text-center text-sm font-medium text-gray-500 space-x-2 mb-4">
+                        <a href="#order" class="hover:text-blue-600" id="lang-id-mobile">ID</a>
+                        <span>|</span>
+                        <a href="#order" class="hover:text-blue-600" id="lang-en-mobile">EN</a>
+                    </div>
+                    <a href="#order" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-lg shadow-sm transition-all" data-key="navPesanMobile">
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- ===== Hero Section ===== -->
+    <main class="pt-16">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 md:pt-32 pb-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                
+                <div>
+                    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500" data-key="heroTitle1">
+                            Solusi Terbaik
+                        </span>
+                        <span data-key="heroTitle2">untuk Bisnis Anda</span>
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-600 max-w-lg" data-key="heroSubtitle">
+                        Platform kami membantu Anda mengelola, menganalisis, dan mengembangkan bisnis secara lebih efisien. Fokus pada hal yang penting, serahkan sisanya pada kami.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                        <a href="#order" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all" data-key="heroBtnMain">
+                            Mulai Sekarang
+                            <i data-feather="arrow-right" class="w-5 h-5 ml-2"></i>
+                        </a>
+                        <a href="#video" class="inline-flex justify-center items-center bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-lg border border-gray-200 shadow-sm transition-all" data-key="heroBtnAlt">
+                            Lihat Video
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="bg-white rounded-xl overflow-hidden browser-shadow">
+                        <div class="h-10 bg-gray-100 border-b border-gray-200 flex items-center px-4 space-x-2">
+                            <span class="w-3 h-3 bg-red-400 rounded-full"></span>
+                            <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
+                            <span class="w-3 h-3 bg-green-400 rounded-full"></span>
+                        </div>
+                        <div class="bg-gray-50 p-4">
+                            <img src="Img/IMG-20251118-WA0008.jpg" 
+                                 alt="Screenshot Aplikasi" 
+                                 class="w-full h-auto rounded-md">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== Video Section ===== -->
+    <section id="video" class="bg-gray-50 border-t border-gray-100">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-24">
+        
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900" data-key="videoTitle">
+                Lihat Video Kami
+            </h2>
+            <p class="mt-4 text-lg text-gray-600" data-key="videoSubtitle">
+                Tonton bagaimana produk kami dibuat dan bagaimana kami membantu para petani lokal.
+            </p>
+        </div>
+        
+        <div class="mt-16 max-w-4xl mx-auto">
+             <div class="overflow-hidden rounded-xl shadow-lg border border-gray-200 browser-shadow video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+             </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ===== Produk Section ===== -->
+    <section id="produk" class="bg-white py-20 md:py-24">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900" data-key="produkTitle">
+                    Produk Unggulan Kami
+                </h2>
+                <p class="mt-4 text-lg text-gray-600" data-key="produkSubtitle">
+                    Dibuat dari bahan-bahan terbaik, langsung dari kebun kami.
+                </p>
+            </div>
+
+            <!-- Grid Produk (3 Kolom, Otomatis Nambah Baris) -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Produk 1 (A) -->
+                <div class="text-center group">
+                    <div class="overflow-hidden rounded-lg shadow-lg border border-gray-100 group-hover:shadow-xl transition-all">
+                        <img src="Img/IMG-20251118-WA0018.jpg" 
+                             alt="Produk A"
+                             class="w-full h-auto object-cover aspect-square transition-transform group-hover:scale-105">
+                    </div>
+                    <h3 class="mt-4 text-lg font-semibold text-gray-900" data-key="produk1Name">Colakmat</h3>
+                    <p class="mt-1 text-sm text-gray-600" data-key="produk1Desc">
+                        Deskripsi singkat produk ini.
+                    </p>
+                </div>
+                
+                <!-- Produk 2 (B) -->
+                <div class="text-center group">
+                    <div class="overflow-hidden rounded-lg shadow-lg border border-gray-100 group-hover:shadow-xl transition-all">
+                        <img src="Img/IMG-20251118-WA0016.jpg" 
+                             alt="Produk B"
+                             class="w-full h-auto object-cover aspect-square transition-transform group-hover:scale-105">
+                    </div>
+                    <h3 class="mt-4 text-lg font-semibold text-gray-900" data-key="produk2Name">Kismis Salak</h3>
+                    <p class="mt-1 text-sm text-gray-600" data-key="produk2Desc">
+                        Deskripsi singkat produk ini.
+                    </p>
+                </div>
+                
+                <!-- Produk 3 (C) -->
+                <div class="text-center group">
+                    <div class="overflow-hidden rounded-lg shadow-lg border border-gray-100 group-hover:shadow-xl transition-all">
+                        <img src="Img/IMG-20251118-WA0014.jpg" 
+                             alt="Produk C"
+                             class="w-full h-auto object-cover aspect-square transition-transform group-hover:scale-105">
+                    </div>
+                    <h3 class="mt-4 text-lg font-semibold text-gray-900" data-key="produk3Name">Sirup Salak</h3>
+                    <p class="mt-1 text-sm text-gray-600" data-key="produk3Desc">
+                        Deskripsi singkat produk ini.
+                    </p>
+                </div>
+
+                <!-- Produk 4 (D) -->
+                <div class="text-center group">
+                    <div class="overflow-hidden rounded-lg shadow-lg border border-gray-100 group-hover:shadow-xl transition-all">
+                        <img src="Img/IMG-20251118-WA0012.jpg" 
+                             alt="Produk D"
+                             class="w-full h-auto object-cover aspect-square transition-transform group-hover:scale-105">
+                    </div>
+                    <h3 class="mt-4 text-lg font-semibold text-gray-900" data-key="produk4Name">Salak Kurma Kramat</h3>
+                    <p class="mt-1 text-sm text-gray-600" data-key="produk4Desc">
+                        Deskripsi singkat produk ini.
+                    </p>
+                </div>
+
+                <!-- Produk 5 (E) -->
+                <div class="text-center group">
+                    <div class="overflow-hidden rounded-lg shadow-lg border border-gray-100 group-hover:shadow-xl transition-all">
+                        <img src="Img/IMG-20251117-WA0014.jpg" 
+                             alt="Produk E"
+                             class="w-full h-auto object-cover aspect-square transition-transform group-hover:scale-105">
+                    </div>
+                    <!-- data-key baru: produk5Name -->
+                    <h3 class="mt-4 text-lg font-semibold text-gray-900" data-key="produk5Name">Dodol Salak</h3>
+                    <p class="mt-1 text-sm text-gray-600" data-key="produk5Desc">
+                        Deskripsi singkat produk ini.
+                    </p>
+                </div>
+
+                <!-- Produk 6 (F) -->
+                <div class="text-center group">
+                    <div class="overflow-hidden rounded-lg shadow-lg border border-gray-100 group-hover:shadow-xl transition-all">
+                        <img src="Img/IMG-20251118-WA0002.jpg" 
+                             alt="Produk F"
+                             class="w-full h-auto object-cover aspect-square transition-transform group-hover:scale-105">
+                    </div>
+                    <!-- data-key baru: produk6Name -->
+                    <h3 class="mt-4 text-lg font-semibold text-gray-900" data-key="produk6Name">Bubuk Sannica</h3>
+                    <p class="mt-1 text-sm text-gray-600" data-key="produk6Desc">
+                        Deskripsi singkat produk ini.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Testimoni Section ===== -->
+    <section id="testimoni" class="bg-gray-50 border-t border-gray-100">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-24">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900" data-key="testimoniTitle">
+                Dipercaya oleh Pelanggan Setia
+            </h2>
+            <p class="mt-4 text-lg text-gray-600" data-key="testimoniSubtitle">
+                Dengar apa kata mereka yang sudah merasakan perubahannya.
+            </p>
+        </div>
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl p-8 border border-gray-100 shadow-sm">
+                <p class="text-gray-700 leading-relaxed" data-key="testimoni1Quote">
+                    "Gila, platform ini ngebantu banget! Omzet kami naik 200% dalam 3 bulan. Gampang dipakai dan fiturnya lengkap banget."
+                </p>
+                <div class="flex items-center mt-6">
+                    <img class="w-12 h-12 rounded-full object-cover" src="https://placehold.co/100x100/e0e7ff/6366f1?text=A" alt="Avatar Andika">
+                    <div class="ml-4">
+                        <p class="font-semibold text-gray-900" data-key="testimoni1Name">Andika Pratama</p>
+                        <p class="text-sm text-gray-500" data-key="testimoni1Job">CEO, Kopi Senja</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl p-8 border border-gray-100 shadow-sm">
+                <p class="text-gray-700 leading-relaxed" data-key="testimoni2Quote">
+                    "Awalnya ragu, tapi setelah coba versi gratisnya, tim kami langsung mutusin buat upgrade. Support-nya juga responsif parah."
+                </p>
+                <div class="flex items-center mt-6">
+                    <img class="w-12 h-12 rounded-full object-cover" src="https://placehold.co/100x100/e0e7ff/6366f1?text=S" alt="Avatar Sarah">
+                    <div class="ml-4">
+                        <p class="font-semibold text-gray-900" data-key="testimoni2Name">Sarah Larasati</p>
+                        <p class="text-sm text-gray-500" data-key="testimoni2Job">Marketing Manager, CreativeHub</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl p-8 border border-gray-100 shadow-sm">
+                <p class="text-gray-700 leading-relaxed" data-key="testimoni3Quote">
+                    "Fitur analitiknya *powerful*. Kami jadi bisa ngambil keputusan berdasarkan data, bukan cuma 'feeling'. *Highly recommended!*"
+                </p>
+                <div class="flex items-center mt-6">
+                    <img class="w-12 h-12 rounded-full object-cover" src="Img/WhatsApp Image 2025-11-01 at 18.10.35_4e062917.jpg" alt="Avatar Orang Ke-3">
+                    <div class="ml-4">
+                        <p class="font-semibold text-gray-900" data-key="testimoni3Name">Bernadus Sinurat</p>
+                        <p class="text-sm text-gray-500" data-key="testimoni3Job">Mahasiswa UTM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ===== About Section ===== -->
+    <section id="about" class="bg-white py-20 md:py-24 border-t border-gray-100">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
+                <div class="w-full">
+                    <img src="Img/IMG-20251118-WA0004.jpg" 
+                         alt="Foto Bapak Solehudin, Ketua Petani & Founder"
+                         class="w-full h-full object-cover rounded-xl shadow-xl sticky top-24">
+                </div>
+                <div class="md:mt-0">
+                    <span class="inline-block text-blue-600 font-semibold tracking-wide uppercase" data-key="aboutBadge">
+                        Ketua Petani & Founder
+                    </span>
+                    <h2 class="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900" data-key="aboutName">
+                        Ibu Sanniyah
+                    </h2>
+                    <blockquote class="mt-6 border-l-4 border-blue-500 pl-4 italic text-xl text-gray-700 font-medium" data-key="aboutQuote">
+                        "Bagi kami, ini bukan sekadar bisnis. Ini adalah cara kami menjaga warisan leluhur dan menyejahterakan tanah kami."
+                    </blockquote>
+                    <div class="mt-8 text-base text-gray-600 leading-relaxed space-y-4">
+                        <p data-key="aboutBio1">
+                            Lahir dan besar di jantung perkebunan rempah, Pak Solehudin telah mendedikasikan hidupnya untuk pertanian. Beliau memulai semuanya dari sepetak kecil tanah warisan keluarga.
+                        </p>
+                        <p data-key="aboutBio2">
+                            Dengan pengalaman lebih dari <strong>20 tahun</strong> sebagai petani, beliau melihat langsung bagaimana hasil panen lokal seringkali dihargai rendah. Berangkat dari kegelisahan itu, beliau mendirikan 'BrandKita' dengan satu misi: memotong rantai pasok dan membawa produk berkualitas tinggi langsung dari petani ke tangan Anda.
+                        </p>
+                    </div>
+                    <ul class="mt-10 space-y-4">
+                        <li class="flex items-start">
+                            <i data-feather="map-pin" class="w-5 h-5 text-blue-600 mr-3 shrink-0 mt-1"></i>
+                            <span class="text-gray-700" data-key="aboutPoint1"><strong>Asal:</strong> Desa Kramat, Kec. Bangkalan, Kab. Bangkalan,Jawa Timur</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="award" class="w-5 h-5 text-blue-600 mr-3 shrink-0 mt-1"></i>
+                            <span class="text-gray-700" data-key="aboutPoint2"><strong>Spesialisasi:</strong> Budidaya Organik & Pasca-Panen</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="target" class="w-5 h-5 text-blue-600 mr-3 shrink-0 mt-1"></i>
+                            <span class="text-gray-700" data-key="aboutPoint3"><strong>Misi:</strong> Memberdayakan 100+ petani lokal di komunitasnya.</span>
+                        </li>
+                    </ul>
+                </div> 
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Lokasi Section ===== -->
+    <section id="lokasi" class="bg-white border-t border-gray-100">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-24">
+            
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900" data-key="lokasiTitle">
+                    Temukan Kami di Sini
+                </h2>
+                <p class="mt-4 text-lg text-gray-600" data-key="lokasiSubtitle">
+                    Kunjungi kami secara langsung di dua lokasi istimewa kami.
+                </p>
+            </div>
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- Lokasi 1: Toko -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4" data-key="lokasi1Name">Toko Utama</h3>
+                    <div class="overflow-hidden rounded-xl shadow-lg border border-gray-200 browser-shadow h-80 md:h-96 w-full relative">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3150.2489459412604!2d112.706294!3d-7.04172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMDInMzAuMiJTIDExMsKwNDInMjIuNyJF!5e1!3m2!1sid!2sid!4v1763479363005!5m2!1sid!2sid" 
+                            class="w-full h-full absolute inset-0 object-cover"
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Lokasi 2: Ecowisata -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4" data-key="lokasi2Name">Ecowisata Perkebunan</h3>
+                    <div class="overflow-hidden rounded-xl shadow-lg border border-gray-200 browser-shadow h-80 md:h-96 w-full relative">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3150.190577408119!2d112.69981999999999!3d-7.050309000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMDMnMDEuMSJTIDExMsKwNDEnNTkuNCJF!5e1!3m2!1sid!2sid!4v1763478576344!5m2!1sid!2sid"
+                            class="w-full h-full absolute inset-0 object-cover"
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!--  CTA (Order) Section -->
+    <section id="order" class="bg-blue-600">
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-20 text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white" data-key="orderTitle">
+            Siap untuk Memulai?
+        </h2>
+        <p class="mt-4 text-lg text-blue-100 max-w-2xl mx-auto" data-key="orderSubtitle">
+            Dapatkan produk berkualitas kami sekarang juga melalui Shopee atau WhatsApp. 
+            Tim kami siap melayani Anda.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://shopee.co.id/sannica_kramat" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex justify-center items-center bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all transform hover:scale-105"
+               data-key="orderBtnShopee">
+                <i data-feather="shopping-cart" class="w-5 h-5 mr-2"></i>
+                Order via Shopee
+            </a>
+            <a href="https://wa.me/6285730393129" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex justify-center items-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all transform hover:scale-105"
+               data-key="orderBtnWA">
+                <i data-feather="message-circle" class="w-5 h-5 mr-2"></i>
+                Order via WhatsApp
+            </a>
+        </div>
+    </div>
+    </section>
+
+    <!--  Footer -->
+    <footer class="bg-white border-t border-gray-100">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+            <p class="text-center text-sm text-gray-500" data-key="footerText">
+                © 2025 Sannica. Semua hak cipta dilindungi.
+            </p>
+        </div>
+    </footer>
+
+    <!-- 
+     SCRIPT UNTUK FITUR BAHASA 
+    -->
+    <script>
+        // --- 1. Logika untuk Tombol Menu Mobile ---
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- 2. Inisialisasi Feather Icons ---
+        feather.replace();
+
+
+        // --- 3. Logika Fitur Bahasa ---
+
+        // Kamus Terjemahan
+        const translations = {
+            // Versi Bahasa Indonesia
+            'id': {
+                siteTitle: "Sannica",
+                navBrand: "Sannica",
+                navAbout: "Tentang",
+                navVideo: "Video",
+                navProduk: "Produk",
+                navTestimoni: "Testimoni",
+                navHarga: "Harga",
+                navLokasi: "Lokasi",
+                navPesan: "Pesan Sekarang",
+                navAboutMobile: "Tentang",
+                navVideoMobile: "Video",
+                navProdukMobile: "Produk",
+                navTestimoniMobile: "Testimoni",
+                navHargaMobile: "Harga",
+                navLokasiMobile: "Lokasi",
+                navPesanMobile: "Pesan Sekarang",
+                heroTitle1: "Solusi Terbaik",
+                heroTitle2: "untuk Bisnis Anda",
+                heroSubtitle: "Platform kami membantu Anda mengelola, menganalisis, dan mengembangkan bisnis secara lebih efisien. Fokus pada hal yang penting, serahkan sisanya pada kami.",
+                heroBtnMain: "Mulai Sekarang",
+                heroBtnAlt: "Lihat Video",
+                videoTitle: "Lihat Video Kami",
+                videoSubtitle: "Tonton bagaimana produk kami dibuat dan bagaimana kami membantu para petani lokal.",
+                produkTitle: "Produk Unggulan Kami",
+                produkSubtitle: "Dibuat dari bahan-bahan terbaik, langsung dari kebun kami.",
+                produk1Name: "Colakmat",
+                produk1Desc: "Deskripsi singkat produk ini.",
+                produk2Name: "Kismis Salak",
+                produk2Desc: "Deskripsi singkat produk ini.",
+                produk3Name: "Sirup Salak",
+                produk3Desc: "Deskripsi singkat produk ini.",
+                produk4Name : "Salak Kurma Kramat",
+                produk4Desc : "Deskripsi singkat produk ini",
+                produk5Name : "Dodol Salak",
+                produk5Desc : "Deskripsi singkat produk ini",
+                produk6Name : "Bubuk Sannica",
+                produk6Desc : "Deskripsi singkat produk ini",
+                testimoniTitle: "Dipercaya oleh Pelanggan Setia",
+                testimoniSubtitle: "Dengar apa kata mereka yang sudah merasakan perubahannya.",
+                testimoni1Quote: "\"Gila, platform ini ngebantu banget! Omzet kami naik 200% dalam 3 bulan. Gampang dipakai dan fiturnya lengkap banget.\"",
+                testimoni1Name: "Andika Pratama",
+                testimoni1Job: "CEO, Kopi Senja",
+                testimoni2Quote: "\"Awalnya ragu, tapi setelah coba versi gratisnya, tim kami langsung mutusin buat upgrade. Support-nya juga responsif parah.\"",
+                testimoni2Name: "Sarah Larasati",
+                testimoni2Job: "Marketing Manager, CreativeHub",
+                testimoni3Quote: "\"Rasa dari produk coklat Sannica enak serta tidak terlalu manis kayak coklat pada umumnya,dan menurut saya ini adalah hal yang inovatif dari proses pengolahan buah*\"",
+                testimoni3Name: "Bernadus Sinurat",
+                testimoni3Job: "Mahasiswa UTM",
+                aboutBadge: "Ketua Petani & Founder",
+                aboutName: "Ibu Sanniyah",
+                aboutQuote: "\"Bagi kami, ini bukan sekadar bisnis. Ini adalah cara kami menjaga warisan leluhur dan menyejahterakan tanah kami.\"",
+                aboutBio1: "Lahir dan besar di jantung perkebunan rempah, Pak Solehudin telah mendedikasikan hidupnya untuk pertanian. Beliau memulai semuanya dari sepetak kecil tanah warisan keluarga.",
+                aboutBio2: "Dengan pengalaman lebih dari <strong>20 tahun</strong> sebagai petani, beliau melihat langsung bagaimana hasil panen lokal seringkali dihargai rendah. Berangkat dari kegelisahan itu, beliau mendirikan 'BrandKita' dengan satu misi: memotong rantai pasok dan membawa produk berkualitas tinggi langsung dari petani ke tangan Anda.",
+                aboutPoint1: "Desa Kramat, Kec. Bangkalan, Kab. Bangkalan,Jawa Timur",
+                aboutPoint2: "<strong>Spesialisasi:</strong> Budidaya Organik & Pasca-Panen",
+                aboutPoint3: "<strong>Misi:</strong> Memberdayakan 100+ petani lokal di komunitasnya.",
+                lokasiTitle: "Temukan Kami di Sini",
+                lokasiSubtitle: "Kunjungi kami secara langsung di dua lokasi istimewa kami.",
+                lokasi1Name: "Toko Utama",
+                lokasi2Name: "Ecowisata Perkebunan",
+                orderTitle: "Siap untuk Memulai?",
+                orderSubtitle: "Dapatkan produk berkualitas kami sekarang juga melalui Shopee atau WhatsApp. Tim kami siap melayani Anda.",
+                orderBtnShopee: "Order via Shopee",
+                orderBtnWA: "Order via WhatsApp",
+                footerText: "© 2025 Sannica. Semua hak cipta dilindungi."
+            },
+            // Versi Bahasa Inggris
+            'en': {
+                siteTitle: "Sannica",
+                navBrand: "Sannica",
+                navAbout: "About",
+                navVideo: "Video",
+                navProduk: "Products",
+                navTestimoni: "Testimonials",
+                navHarga: "Pricing",
+                navLokasi: "Locations",
+                navPesan: "Order Now",
+                navAboutMobile: "About",
+                navVideoMobile: "Video",
+                navProdukMobile: "Products",
+                navTestimoniMobile: "Testimonials",
+                navHargaMobile: "Pricing",
+                navLokasiMobile: "Locations",
+                navPesanMobile: "Order Now",
+                heroTitle1: "The Best Solution",
+                heroTitle2: "for Your Business",
+                heroSubtitle: "Our platform helps you manage, analyze, and grow your business more efficiently. Focus on what matters, leave the rest to us.",
+                heroBtnMain: "Get Started",
+                heroBtnAlt: "Watch Video",
+                videoTitle: "Watch Our Video",
+                videoSubtitle: "See how our products are made and how we help local farmers.",
+                produkTitle: "Our Featured Products",
+                produkSubtitle: "Made from the best ingredients, straight from our gardens.",
+                produk1Name: "Colakmat",
+                produk1Desc: "A brief description of this product.",
+                produk2Name: "Kismis Salak",
+                produk2Desc: "A brief description of this product.",
+                produk3Name: "Salak Syrup",
+                produk3Desc: "A brief description of this product.",
+                produk4Name : "Salak Kurma Kramat",
+                produk4Desc : "Deskripsi singkat produk ini",
+                produk5Name : "Dodol Salak",
+                produk5Desc : "Deskripsi singkat produk ini",
+                produk6Name : "Sannica powder",
+                produk6Desc : "Deskripsi singkat produk ini",
+                testimoniTitle: "Trusted by Loyal Customers",
+                testimoniSubtitle: "Hear what those who have experienced the change have to say.",
+                testimoni1Quote: "\"Crazy, this platform is so helpful! Our revenue increased by 200% in 3 months. Easy to use and the features are very complete.\"",
+                testimoni1Name: "Andika Pratama",
+                testimoni1Job: "CEO, Senja Coffee",
+                testimoni2Quote: "\"Was hesitant at first, but after trying the free version, our team immediately decided to upgrade. The support is also incredibly responsive.\"",
+                testimoni2Name: "Sarah Larasati",
+                testimoni2Job: "Marketing Manager, CreativeHub",
+                testimoni3Quote: "\"The taste of Sannica chocolate products is delicious and not too sweet like most chocolates, and I think this is an innovative aspect of the fruit processing process.\"",
+                testimoni3Name: "Bernadus Sinurat",
+                testimoni3Job: "UTM Student",
+                aboutBadge: "Head Farmer & Founder",
+                aboutName: "Mrs. Sanniyah",
+                aboutQuote: "\"For us, this isn't just a business. It's our way of preserving heritage and prospering our land.\"",
+                aboutBio1: "Born and raised in the heart of the spice plantations, Mr. Solehudin has dedicated his life to agriculture. He started it all from a small plot of family land.",
+                aboutBio2: "With over <strong>20 years</strong> of experience as a farmer, he saw firsthand how local produce was often undervalued. Driven by this, he founded 'BrandKita' with one mission: to cut the supply chain and bring high-quality products directly from farmers to your hands.",
+                aboutPoint1: " Kramat Village, Bangkalan District, Bangkalan Regency, East Java",
+                aboutPoint2: "<strong>Specialty:</strong> Organic Farming & Post-Harvest",
+                aboutPoint3: "<strong>Mission:</strong> Empowering 100+ local farmers in his community.",
+                lokasiTitle: "Find Us Here",
+                lokasiSubtitle: "Visit us in person at our two special locations.",
+                lokasi1Name: "Main Store",
+                lokasi2Name: "Plantation Ecovillage",
+                orderTitle: "Ready to Get Started?",
+                orderSubtitle: "Get our quality products now via Shopee or WhatsApp. Our team is ready to serve you.",
+                orderBtnShopee: "Order via Shopee",
+                orderBtnWA: "Order via WhatsApp",
+                footerText: "© 2025 Sannica. All rights reserved."
+            }
+        };
+
+        // Fungsi untuk mengganti bahasa
+        function setLanguage(lang) {
+            // Ganti atribut 'lang' di <html>
+            document.documentElement.lang = lang;
+
+            // Simpan pilihan bahasa ke localStorage
+            localStorage.setItem('language', lang);
+
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.dataset.key;
+                const translation = translations[lang][key];
+                if (translation) {
+                    element.innerHTML = translation; 
+                }
+            });
+            
+            // Ganti style tombol aktif
+            updateLangButtons(lang);
+        }
+
+        // Fungsi untuk update style tombol
+        function updateLangButtons(activeLang) {
+            const buttons = document.querySelectorAll('.lang-switcher a');
+            buttons.forEach(button => {
+                // Hapus 'active' dari semua tombol
+                button.classList.remove('active');
+                
+                // Tambahin 'active' cuma ke tombol yang bener (ID atau EN)
+                if (button.id === `lang-${activeLang}` || button.id === `lang-${activeLang}-mobile`) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        // --- 4. Event Listeners untuk Tombol Bahasa ---
+        
+        // Tombol Desktop
+        document.getElementById('lang-id').addEventListener('click', (e) => {
+            e.preventDefault(); // Biar halaman gak loncat ke atas
+            setLanguage('id');
+        });
+        document.getElementById('lang-en').addEventListener('click', (e) => {
+            e.preventDefault();
+            setLanguage('en');
+        });
+
+        // Tombol Mobile
+        document.getElementById('lang-id-mobile').addEventListener('click', (e) => {
+            e.preventDefault();
+            setLanguage('id');
+            mobileMenu.classList.add('hidden'); //  tutup menu
+        });
+        document.getElementById('lang-en-mobile').addEventListener('click', (e) => {
+            e.preventDefault();
+            setLanguage('en');
+            mobileMenu.classList.add('hidden'); // tutup menu
+        });
+
+        // --- 5. Cek Pilihan Bahasa Pas Halaman di-load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Cek apa user udah pernah milih bahasa?
+            const savedLang = localStorage.getItem('language');
+            
+            // Kalo ada, pake bahasa itu. Kalo gak ada, pake 'id' (Bahasa Indonesia)
+            setLanguage(savedLang || 'id');
+        });
+
+    </script>
+</body>
+</html>
