@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<!-- Default bahasa ID -->
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="pageTitle">Tentang Kami</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Style Kustom -->
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
+        .jabatan-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .jabatan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            border-color: #3b82f6;
+        }
+
+        .jabatan-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .jabatan-nama {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1f2937;
+            line-height: 1.4;
+        }
+        
+        .jabatan-icon {
+            margin-bottom: 0.75rem;
+            color: #3b82f6;
+            background-color: #eff6ff;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        /* Style Tombol Bahasa (Aktif) */
+        .lang-switcher a.active {
+            font-weight: 800;
+            color: #2563eb; /* blue-600 */
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- ===== Navigasi ===== -->
+    <nav class="bg-white/80 backdrop-blur-sm border-b border-gray-100 fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <!-- Tombol Kembali -->
+                <div class="flex justify-start items-center">
+                    <a href="../index.html" class="group inline-flex items-center text-gray-700 hover:text-blue-600 font-medium transition-all">
+                        <i data-feather="arrow-left" class="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1"></i>
+                        <span data-key="navBack">Kembali ke Beranda</span>
+                    </a>
+                </div>
+
+                <!-- Tombol Bahasa  -->
+                <div class="flex items-center">
+                    <div class="lang-switcher text-sm font-medium text-gray-500 space-x-2">
+                        <a href="#" class="hover:text-blue-600 transition-colors" id="lang-id">ID</a>
+                        <span>|</span>
+                        <a href="#" class="hover:text-blue-600 transition-colors" id="lang-en">EN</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== KONTEN UTAMA ===== -->
+    <main class="pt-24 pb-20">
+        <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            
+            <!-- Header Text -->
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-4" data-key="headerTitle">
+                    Tim Kami
+                </h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto" data-key="headerSubtitle">
+                    Sosok-sosok hebat di balik keberhasilan Salak Rindang.
+                </p>
+            </div>
+
+            <!-- 1. FOTO IBU  -->
+            <div class="flex flex-col items-center mb-16">
+                <div class="relative group mb-6">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative bg-white ring-1 ring-gray-900/5 rounded-xl p-2">
+                        <img src="../Img/WhatsApp Image 2025-11-17 at 21.16.30.jpeg" 
+                             alt="Ibu Saniyah - Ketua" 
+                             class="w-64 h-64 object-cover rounded-lg shadow-sm">
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-gray-900">Ibu Saniyah</h2>
+                    <span class="inline-block mt-2 px-4 py-1 bg-blue-100 text-blue-700 text-sm font-bold rounded-full tracking-wide" data-key="roleKetua">
+                        KETUA KELOMPOK
+                    </span>
+                </div>
+            </div>
+
+            <!-- 2. GRID STRUKTUR ORGANISASI -->
+            <div class="max-w-5xl mx-auto mb-24">
+                
+                <h2 class="text-2xl font-bold text-center mb-8 text-gray-800" data-key="orgTitle">Struktur Organisasi</h2>
+
+                <!-- Baris 1: Sekretaris & Bendahara -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    
+                    <!-- Sekretaris -->
+                    <div class="jabatan-card">
+                        <div class="jabatan-icon"><i data-feather="edit-2" class="w-5 h-5"></i></div>
+                        <div class="jabatan-label" data-key="roleSekretaris">Sekretaris</div>
+                        <div class="jabatan-nama">SITI MASWIYAH</div>
+                    </div>
+                    
+                    <!-- Bendahara -->
+                    <div class="jabatan-card">
+                        <div class="jabatan-icon"><i data-feather="dollar-sign" class="w-5 h-5"></i></div>
+                        <div class="jabatan-label" data-key="roleBendahara">Bendahara</div>
+                        <div class="jabatan-nama">MU'AWANAH</div>
+                    </div>
+                </div>
+
+                <!-- Baris 2: Seksi-Seksi -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Seksi 1 -->
+                    <div class="jabatan-card">
+                        <div class="jabatan-icon"><i data-feather="users" class="w-5 h-5"></i></div>
+                        <div class="jabatan-label" data-key="roleHumas">Seksi Humas & Promosi</div>
+                        <div class="jabatan-nama">MUN FADLI</div>
+                    </div>
+
+                    <!-- Seksi 2 -->
+                    <div class="jabatan-card">
+                        <div class="jabatan-icon"><i data-feather="home" class="w-5 h-5"></i></div>
+                        <div class="jabatan-label" data-key="roleAkomodasi">Seksi Akomodasi & Konsumsi</div>
+                        <div class="jabatan-nama">MUTIMMUS SOLIHAH</div>
+                    </div>
+
+                    <!-- Seksi 3 -->
+                    <div class="jabatan-card">
+                        <div class="jabatan-icon"><i data-feather="book-open" class="w-5 h-5"></i></div>
+                        <div class="jabatan-label" data-key="rolePelatihan">Pelatihan Magang</div>
+                        <div class="jabatan-nama">NUR IMAMAH</div>
+                    </div>
+
+                    <!-- Seksi 4 -->
+                    <div class="jabatan-card">
+                        <div class="jabatan-icon"><i data-feather="package" class="w-5 h-5"></i></div>
+                        <div class="jabatan-label" data-key="rolePengolahan">Pengolahan Hasil</div>
+                        <div class="jabatan-nama">SU'IDAH</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 
+     SECTION MAHASISWA 
+    -->
+    <section class="bg-blue-50 py-20 border-t border-blue-100">
+        <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-12">
+                <span class="text-blue-600 font-bold tracking-wide uppercase text-sm" data-key="mhsBadge">Di Balik Layar</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2" data-key="mhsTitle">Tim Mahasiswa Pendamping</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto" data-key="mhsSubtitle">
+                    Website ini dikembangkan dan dikelola sebagai bentuk pengabdian masyarakat oleh mahasiswa 
+                    <strong>UNIVERSITAS TRUNOJOYO MADURA</strong> untuk mendukung digitalisasi UMKM Salak Rindang.
+                </p>
+            </div>
+
+            <!-- Grid Mahasiswa -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-center">
+                
+                <!-- Mahasiswa 1 -->
+                <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-blue-100 hover:shadow-md transition-all">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+                        <!-- GANTI FOTO KALIAN -->
+                        <img src="../Img/WhatsApp Image 2025-11-01 at 17.55.27_ea3a5a12.jpg" alt="Mahasiswa 1" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg">Ari Akbar</h3>
+                    <p class="text-blue-600 text-sm font-medium" data-key="mhsRole1">Ketua Tim</p>
+                    <p class="text-gray-500 text-xs mt-2">Fakultas Ekonomi dan Bisnis</p>
+                </div>
+
+                <!-- Mahasiswa 2 -->
+                <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-blue-100 hover:shadow-md transition-all">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+                        <img src="../Img/WhatsApp Image 2025-11-01 at 18.10.35_4e062917.jpg" alt="Mahasiswa 2" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg">Bernadus Sinurat</h3>
+                    <p class="text-blue-600 text-sm font-medium" data-key="mhsRole2">Desain & Konten</p>
+                    <p class="text-gray-500 text-xs mt-2">Fakultas Ekonomi dan Bisnis</p>
+                </div>
+
+                <!-- Mahasiswa 3 -->
+                <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-blue-100 hover:shadow-md transition-all">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+                        <img src="../Img/WhatsApp Image 2025-11-01 at 19.00.59_3770392a.jpg" alt="Mahasiswa 3" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg">Achmad Faisal Al Farizy</h3>
+                    <p class="text-blue-600 text-sm font-medium" data-key="mhsRole3">Developer</p>
+                    <p class="text-gray-500 text-xs mt-2">Fakultas Ekonomi dan Bisnis</p>
+                </div>
+
+                <!-- Mahasiswa 4 -->
+                <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-blue-100 hover:shadow-md transition-all">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+                        <img src="../Img/WhatsApp Image 2025-11-01 at 19.10.49_a1d2a080.jpg" alt="Mahasiswa 4" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg">Umroatus Soleha</h3>
+                    <p class="text-blue-600 text-sm font-medium" data-key="mhsRole4">Dokumentasi</p>
+                    <p class="text-gray-500 text-xs mt-2">Fakultas Ekonomi dan Bisnis</p>
+                </div>
+
+            </div>
+            
+            <!-- Logo Kampus (Opsional) -->
+            <div class="mt-12 text-center opacity-60 grayscale hover:grayscale-0 transition-all">
+                <p class="text-sm text-gray-500 mb-4" data-key="mhsKkn">Program Penelitian Periode 2025</p>
+                <!-- Ganti Logo Kampus -->
+                <img src="../Img/LOGO UTM.png" alt="Logo Kampus" class="h-12 mx-auto inline-block">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-white border-t border-gray-100">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+            <p class="text-center text-sm text-gray-500" data-key="footerText">
+                © 2025 Sannica. Semua hak cipta dilindungi.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPT BAHASA & IKON ===== -->
+    <script>
+        // 1. Inisialisasi Feather Icons
+        feather.replace();
+
+        const translations = {
+            'id': {
+                pageTitle: "Tentang Kami - BrandKita",
+                navBack: "Kembali ke Beranda",
+                headerTitle: "Tim Kami",
+                headerSubtitle: "Sosok-sosok hebat di balik keberhasilan Salak Rindang.",
+                roleKetua: "KETUA KELOMPOK",
+                orgTitle: "Struktur Organisasi",
+                roleSekretaris: "Sekretaris",
+                roleBendahara: "Bendahara",
+                roleHumas: "Seksi Humas & Promosi",
+                roleAkomodasi: "Seksi Akomodasi & Konsumsi",
+                rolePelatihan: "Pelatihan Magang",
+                rolePengolahan: "Pengolahan Hasil",
+                
+                // Terjemahan Section Mahasiswa
+                mhsBadge: "Di Balik Layar",
+                mhsTitle: "Tim Mahasiswa Pendamping",
+                mhsSubtitle: "Website ini dikembangkan dan dikelola sebagai bentuk pengabdian masyarakat oleh mahasiswa <strong>UNIVERSITAS TRUNOJOYO MADURA</strong> untuk mendukung digitalisasi UMKM Salak Rindang.",
+                mhsRole1: "Ketua Tim",
+                mhsRole2: "Desain & Konten",
+                mhsRole3: "Developer",
+                mhsRole4: "Dokumentasi",
+                mhsKkn: "Program Penelitian Periode 2025",
+
+                footerText: "© 2025 Salak Rindang. Semua hak cipta dilindungi."
+            },
+            'en': {
+                pageTitle: "About Us - BrandKita",
+                navBack: "Back to Home",
+                headerTitle: "Our Team",
+                headerSubtitle: "The great figures behind Salak Rindang's success.",
+                roleKetua: "GROUP LEADER",
+                orgTitle: "Organizational Structure",
+                roleSekretaris: "Secretary",
+                roleBendahara: "Treasurer",
+                roleHumas: "PR & Promotion Section",
+                roleAkomodasi: "Accomodation & Consumption",
+                rolePelatihan: "Internship Training",
+                rolePengolahan: "Product Processing",
+
+                // Terjemahan Section Mahasiswa (EN)
+                mhsBadge: "Behind The Scenes",
+                mhsTitle: "Student Support Team",
+                mhsSubtitle: "This website is developed and managed as a community service by students of <strong>TRUNOJOYO MADURA UNIVERSITY</strong> to support the digitalization of Salak Rindang MSME.",
+                mhsRole1: "Team Lead",
+                mhsRole2: "Design & Content",
+                mhsRole3: "Developer",
+                mhsRole4: "Documentation",
+                mhsKkn: "2025 Research Program",
+
+                footerText: "© 2025 Salak Rindang. All rights reserved."
+            }
+        };
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            localStorage.setItem('language', lang);
+
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.dataset.key;
+                const translation = translations[lang][key];
+                if (translation) {
+                    element.innerHTML = translation;
+                }
+            });
+            
+            updateLangButtons(lang);
+        }
+
+        function updateLangButtons(activeLang) {
+            const buttons = document.querySelectorAll('.lang-switcher a');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+                if (button.id === `lang-${activeLang}`) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        // Event Listeners
+        document.getElementById('lang-id').addEventListener('click', (e) => {
+            e.preventDefault();
+            setLanguage('id');
+        });
+        document.getElementById('lang-en').addEventListener('click', (e) => {
+            e.preventDefault();
+            setLanguage('en');
+        });
+
+        // Cek Bahasa Pas Load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('language');
+            setLanguage(savedLang || 'id');
+        });
+    </script>
+
+</body>
+</html>
