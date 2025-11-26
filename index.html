@@ -470,6 +470,13 @@
                 <i data-feather="message-circle" class="w-5 h-5 mr-2"></i>
                 Order via WhatsApp
             </a>
+
+            <button onclick="beliViaEmail()" 
+                   class="w-full md:w-auto inline-flex justify-center items-center bg-indigo-800 hover:bg-indigo-900 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all transform hover:scale-105"
+                   data-key="orderBtnEmail">
+                    <i data-feather="mail" class="w-5 h-5 mr-2"></i>
+                    <span data-key="orderBtnEmailText">Order via Email</span>
+            </button>
         </div>
     </div>
     </section>
@@ -487,6 +494,17 @@
      SCRIPT UNTUK FITUR BAHASA 
     -->
     <script>
+        function beliViaEmail() {
+            // GANTI EMAIL INI DENGAN EMAIL TOKO LU
+            const emailTujuan = "healtybherrempah@gmail.com"; 
+            
+            const subject = "Pemesanan Produk Salak Rindang";
+            const body = "Halo Admin,\n\nSaya tertarik untuk memesan produk Salak Rindang.\nMohon informasinya.\n\nTerima kasih.";
+            
+            const mailtoLink = `mailto:${emailTujuan}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            window.location.href = mailtoLink;
+        }
         // --- 1. Logika untuk Tombol Menu Mobile ---
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -503,6 +521,7 @@
 
         // --- 2. Inisialisasi Feather Icons ---
         feather.replace();
+            
 
 
         // --- 3. Logika Fitur Bahasa ---
@@ -577,6 +596,7 @@
                 orderSubtitle: "Dapatkan produk berkualitas kami sekarang juga melalui Shopee atau WhatsApp. Tim kami siap melayani Anda.",
                 orderBtnShopee: "Order via Shopee",
                 orderBtnWA: "Order via WhatsApp",
+                orderBtnEmailText: "Order via Email",
                 footerText: "© 2025 Sannica. Semua hak cipta dilindungi."
             },
             // Versi Bahasa Inggris
@@ -647,6 +667,7 @@
                 orderSubtitle: "Get our quality products now via Shopee or WhatsApp. Our team is ready to serve you.",
                 orderBtnShopee: "Order via Shopee",
                 orderBtnWA: "Order via WhatsApp",
+                 orderBtnEmailText: "Order via Email",
                 footerText: "© 2025 Sannica. All rights reserved."
             }
         };
