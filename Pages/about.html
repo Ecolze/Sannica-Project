@@ -209,58 +209,42 @@
             </div>
 
             <!-- Grid Mahasiswa -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-center">
+             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center">
                 
                 <!-- Mahasiswa 1 -->
                 <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-blue-100 hover:shadow-md transition-all">
                     <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
-                        <!-- GANTI FOTO KALIAN -->
-                        <img src="../Img/WhatsApp Image 2025-11-01 at 17.55.27_ea3a5a12.jpg" alt="Mahasiswa 1" class="w-full h-full object-cover">
+                        <img src="../Img/WhatsApp Image 2025-11-01 at 17.55.27_ea3a5a12.jpg" alt="Ari Akbar" class="w-full h-full object-cover">
                     </div>
                     <h3 class="font-bold text-gray-900 text-lg">Ari Akbar</h3>
                     <p class="text-blue-600 text-sm font-medium" data-key="mhsRole1">Ketua Tim</p>
-                    <p class="text-gray-500 text-xs mt-2">Fakultas Ekonomi dan Bisnis</p>
+                    <!-- Tambah data-key -->
+                    <p class="text-gray-500 text-xs mt-2" data-key="mhsFacultyEkonomi">Fakultas Ekonomi dan Bisnis</p>
                 </div>
 
                 <!-- Mahasiswa 2 -->
                 <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-blue-100 hover:shadow-md transition-all">
                     <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
-                        <img src="../Img/WhatsApp Image 2025-11-01 at 18.10.35_4e062917.jpg" alt="Mahasiswa 2" class="w-full h-full object-cover">
+                        <img src="../Img/WhatsApp Image 2025-12-27 at 15.26.55.jpeg" alt="Misbahul Jamal Kurniawan" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="font-bold text-gray-900 text-lg">Bernadus Sinurat</h3>
+                    <h3 class="font-bold text-gray-900 text-lg">Misbahul Jamal Kurniawan</h3>
                     <p class="text-blue-600 text-sm font-medium" data-key="mhsRole2">Desain & Konten</p>
-                    <p class="text-gray-500 text-xs mt-2">Fakultas Ekonomi dan Bisnis</p>
+                    <!-- Tambah data-key -->
+                    <p class="text-gray-500 text-xs mt-2" data-key="mhsFacultyPertanian">Fakultas Pertanian</p>
                 </div>
 
                 <!-- Mahasiswa 3 -->
                 <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-blue-100 hover:shadow-md transition-all">
                     <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
-                        <img src="../Img/WhatsApp Image 2025-11-01 at 19.00.59_3770392a.jpg" alt="Mahasiswa 3" class="w-full h-full object-cover">
+                        <img src="../Img/WhatsApp Image 2025-11-01 at 19.00.59_3770392a.jpg" alt="Achmad Faisal Al Farizy" class="w-full h-full object-cover">
                     </div>
                     <h3 class="font-bold text-gray-900 text-lg">Achmad Faisal Al Farizy</h3>
                     <p class="text-blue-600 text-sm font-medium" data-key="mhsRole3">Developer</p>
-                    <p class="text-gray-500 text-xs mt-2">Fakultas Ekonomi dan Bisnis</p>
-                </div>
-
-                <!-- Mahasiswa 4 -->
-                <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-blue-100 hover:shadow-md transition-all">
-                    <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
-                        <img src="../Img/WhatsApp Image 2025-11-01 at 19.10.49_a1d2a080.jpg" alt="Mahasiswa 4" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="font-bold text-gray-900 text-lg">Umroatus Soleha</h3>
-                    <p class="text-blue-600 text-sm font-medium" data-key="mhsRole4">Dokumentasi</p>
-                    <p class="text-gray-500 text-xs mt-2">Fakultas Ekonomi dan Bisnis</p>
+                    <!-- Tambah data-key -->
+                    <p class="text-gray-500 text-xs mt-2" data-key="mhsFacultyEkonomi">Fakultas Ekonomi dan Bisnis</p>
                 </div>
 
             </div>
-            
-            <!-- Logo Kampus (Opsional) -->
-            <div class="mt-12 text-center opacity-60 grayscale hover:grayscale-0 transition-all">
-                <p class="text-sm text-gray-500 mb-4" data-key="mhsKkn">Program Penelitian Periode 2025</p>
-                <!-- Ganti Logo Kampus -->
-                <img src="../Img/LOGO UTM.png" alt="Logo Kampus" class="h-12 mx-auto inline-block">
-            </div>
-
         </div>
     </section>
 
@@ -300,8 +284,9 @@
                 mhsRole1: "Ketua Tim",
                 mhsRole2: "Desain & Konten",
                 mhsRole3: "Developer",
-                mhsRole4: "Dokumentasi",
                 mhsKkn: "Program Penelitian Periode 2025",
+                mhsFacultyEkonomi: "Fakultas Ekonomi dan Bisnis",
+                mhsFacultyPertanian: "Fakultas Pertanian",
 
                 footerText: "© 2025 Salak Rindang. Semua hak cipta dilindungi."
             },
@@ -328,6 +313,8 @@
                 mhsRole3: "Developer",
                 mhsRole4: "Documentation",
                 mhsKkn: "2025 Research Program",
+                mhsFacultyEkonomi: "Faculty of Economics and Business",
+                mhsFacultyPertanian: "Faculty of Agriculture",
 
                 footerText: "© 2025 Salak Rindang. All rights reserved."
             }
